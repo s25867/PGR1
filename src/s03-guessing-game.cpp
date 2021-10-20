@@ -8,14 +8,14 @@ auto main() -> int
 	std::uniform_int_distribution<int> d100 (1, 100);
 
 	auto const a = d100(rd);
-	std::string b;
-
+	int  b;
+	std::cout << a << "\n"; //wyświetla szukana liczbe
 do {
 	std::cout << "guess:\n";
-	std::getline(std::cin, b);
+	std::cin >> b;
 	if (b>a)
 		{std::cout << "too big\n";}
-	if (b<a)
+	else if (b<a)
 		{std::cout << "too small\n";}
 }
 while (a!=b);
