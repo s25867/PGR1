@@ -6,8 +6,11 @@
 auto time1::to_string() const -> std::string
 {
 	auto out = std::ostringstream{};
-
-	out << this->godzina << " :" << this->minuta << " :" << this->sekunda <<"\n";
+		std::string x;
+	if (godzina<10)
+		{x = "0";}
+	else {x = "";}
+	out << this->godzina << x << ":" << this->minuta << y << ":" << this->sekunda << z << "\n";
 
 	return out.str();
 }
