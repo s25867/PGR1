@@ -27,10 +27,11 @@ auto time1::to_string() const -> std::string
 
 time1::time1(int godzina, int minuta, int sekunda)
 {
-        this->godzina = godzina;
-        this->minuta = minuta;
-        this->sekunda = sekunda;
+	this->godzina = godzina;
+	this->minuta = minuta;
+	this-> sekunda = sekunda;;
 }
+
 
 auto time1::next_hour() -> void
 {
@@ -75,16 +76,133 @@ return out.str();
 }
 
 
+    auto time1::count_seconds() const -> std::uint64_t {
+        std::uint64_t count = 0;
+        count += godzina * 60 * 60;
+        count += minuta * 60;
+        count += sekunda;
+        return count;
+    }
+
+    auto time1::count_minutes() const -> std::uint64_t {
+        std::uint64_t count = 0;
+        count += godzina * 60;
+        count += minuta;
+        return count;
+    }	
+
+	auto time1::ttm() const -> time1 {
+	
+        godzina.count = 0;
+        
+        return time1(g, m, s);
+    }
+
+    auto time1::operator+ (time1 const& o) const -> time1 {
+        unsigned short g = godzina;
+        unsigned short m = minuta;
+        unsigned short s = sekunda;
+        s += o.sekunda;
+        if(s > 59) {
+            s -= 60;
+            m++;
+        }
+        m += o.minuta;
+        if(m > 59) {
+            m -= 60;
+            g++;
+        }
+        g += o.godzina;
+        if(g > 23)
+            g -= 24;
+
+        return time1(g, m, s);
+    }
+
+    auto time1::operator- (time1 const& o) const -> time1 {
+        short g = godzina;
+        short m = minuta;
+        short s = sekunda;
+        s -= o.sekunda;
+        if(s < 0) {
+            s += 60;
+            m--;
+        }
+        m -= o.minuta;
+        if(m < 0) {
+            m += 60;
+            g--;
+        }
+        g -= o.godzina;
+        if(g < 0)
+            g += 24;
+
+        return time1(g, m, s);
+    }
+
+    auto time1::operator< (time1 const& o) const -> bool {
+        if(godzina < o.godzina)
+            return true;
+        if(godzina != o.godzina)
+            return false;
+        if(minuta < o.minuta)
+            return true;
+        if(minuta != o.minuta)
+            return false;
+        if(sekunda < o.sekunda)
+            return true;
+        if(sekunda != o.minuta)
+            return false;
+        return false;
+    }
+
+    auto time1::operator> (time1 const& o) const -> bool {
+        if(godzina > o.godzina)
+            return true;
+        if(godzina != o.godzina)
+            return false;
+        if(minuta > o.minuta)
+            return true;
+        if(minuta != o.minuta)
+            return false;
+        if(sekunda > o.sekunda)
+            return true;
+        if(sekunda != o.minuta)
+            return false;
+        return false;
+    }
+
+    auto time1::operator== (time1 const& o) const -> bool {
+        return (godzina==o.godzina && minuta==o.minuta&&sekunda==o.sekunda);
+    }
+
+    auto time1::operator!= (time1 const& o) const -> bool {
+        return !(godzina==o.godzina && minuta==o.minuta&&sekunda==o.sekunda);
+    }
+
 auto main() -> int
 {
-	auto s = time1{7, 13, 0};
+	auto s = time1{1, 1, 0};
+
+	std::cout << "ttm" << s.ttm() << "\n";
 
 	std::cout << s.to_string();
+        s.count_minutes();
+        s.count_seconds();
+        std::cout << s.tod();
+    std::cout << "seconds: " << s.count_seconds() << "\n";
+    std::cout << "minutes: " << s.count_minutes() << "\n";
+
 	s.next_hour();
 	s.next_minute();
 	s.next_second();
 	std::cout << s.to_string();
 	std::cout << s.tod();
+
+	s.count_minutes();
+	s.count_seconds();
+    std::cout << "seconds: " << s.count_seconds() << "\n";
+    std::cout << "minutes: " << s.count_minutes() << "\n";
 }
 
 
