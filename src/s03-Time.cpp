@@ -91,13 +91,6 @@ return out.str();
         return count;
     }	
 
-	auto time1::ttm() const -> time1 {
-	
-        godzina.count = 0;
-        
-        return time1(g, m, s);
-    }
-
     auto time1::operator+ (time1 const& o) const -> time1 {
         unsigned short g = godzina;
         unsigned short m = minuta;
@@ -184,7 +177,6 @@ auto main() -> int
 {
 	auto s = time1{1, 1, 0};
 
-	std::cout << "ttm" << s.ttm() << "\n";
 
 	std::cout << s.to_string();
         s.count_minutes();
