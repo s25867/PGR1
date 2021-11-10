@@ -21,7 +21,6 @@ auto time1::to_string() const -> std::string
         else {z = "";}
 
 	out << x << this->godzina << ":" << y << this->minuta << ":" << z << this->sekunda << "\n";
-
 	return out.str();
 }
 
@@ -90,6 +89,25 @@ return out.str();
         count += minuta;
         return count;
     }	
+
+    auto ttm(time1 czas) -> time1
+{
+	auto time=time1{0, 0, 0};
+	time.sekunda = 60 - czas.sekunda;
+
+	if(time.sekunda > 0)
+	time.minuta = 59 - czas.minuta;
+	else
+	time.minuta = 60 - czas.minuta;
+
+	if(time.minuta > 0)
+	time.godzina = 23 - czas.godzina;
+	else
+	time.minuta = 24 - czas.godzina;
+
+	return time;
+
+}
 
     auto time1::operator+ (time1 const& o) const -> time1 {
         unsigned short g = godzina;
@@ -195,6 +213,7 @@ auto main() -> int
 	s.count_seconds();
     std::cout << "seconds: " << s.count_seconds() << "\n";
     std::cout << "minutes: " << s.count_minutes() << "\n";
+	std::cout << "time to midnight" <<  ttm(s).to_string() << "\n";
 }
 
 

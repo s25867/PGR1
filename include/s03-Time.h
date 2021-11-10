@@ -17,7 +17,6 @@ struct time1 {
 
     auto count_seconds() const -> std::uint64_t;
     auto count_minutes() const -> std::uint64_t;
-    auto ttm() const -> time1;
 
 	auto operator + ( time1 const &) const -> time1 ;
 	auto operator - ( time1 const &) const -> time1 ;
