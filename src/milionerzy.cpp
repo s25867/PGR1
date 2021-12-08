@@ -1,31 +1,10 @@
-// C++ program for the above approach
+#include <question.h>
 #include <iostream>
 #include <string>
 using namespace std;
 
 int Guess;
 int Total;
-
-// Question Class
-class Question {
-private:
-	string Question_Text;
-	string Answer_1;
-	string Answer_2;
-	string Answer_3;
-	string Answer_4;
-	int Correct_Answer;
-	int Question_Score;
-
-public:
-	// Setter Function
-	void setValues(string, string,
-				string, string,
-				string, int, int);
-
-	// Function to ask questions
-	void askQuestion();
-};
 
 // Driver code
 int main()
@@ -44,18 +23,8 @@ int main()
 		return 0;
 	}
 
-	// Objects of Question Class
-	Question q1;
-	Question q2;
-	Question q3;
-	Question q4;
-	Question q5;
-	Question q6;
-	Question q7;
-	Question q8;
-	Question q9;
-	Question q10;
 
+	// Objects of Question 
 	// pytanie, odp, odp, odp, odp, numer popr odp, wartosc
 	q1.setValues("Jakiego koloru jest żółty maluch: ", "Czerwonego",
 				"Zielonego", "Żółtego",
@@ -89,6 +58,7 @@ int main()
 				"Gdańsk", 1, 10);
 
 	q1.askQuestion();
+	q1.check();
 	q2.askQuestion();
 	q3.askQuestion();
 	q4.askQuestion();
@@ -100,23 +70,20 @@ int main()
 	q10.askQuestion();
 
 	// Display the total score
-	cout << "Twój wynik = " << Total
-		<< " na 100" << endl;
-
-	// Display the results
+	cout << "To koniec pytań, twój wynik = " << Total << endl;
 
 	// If the player pass the quiz
-	if (Total >= 70) {
+	if (Total >= 100) {
 		cout << "Gratulacje zdałeś quiz" << endl;
-	}
+		return 0;
+}
 
 	// Otherwise
-	else {
-		cout << "Niestety nie zdałeś."
-			<< endl;
-		cout << "Powodzenia następnym razem."
-			<< endl;
-	}
+	else
+	if (Total < 0) {
+		cout << "Niestety, ale przegrałeś!" << endl;
+		return 0;
+}
 	return 0;
 }
 
@@ -136,6 +103,21 @@ void Question::setValues(
 	Question_Score = pa;
 }
 
+//Check if won/lost during quiz
+int Question::check()
+{
+        if (Total >= 100) {
+                cout << "Gratulacje zdałeś quiz" << endl;
+        	return 0;
+}
+
+        else
+        if (Total < 0) {
+                cout << "Twoje punkty wynoszą " << Total << ". To koniec, przegrałeś!" << endl;
+        	return 0;
+}
+return 0;
+}
 // Function to ask questions
 void Question::askQuestion()
 {
@@ -161,10 +143,7 @@ void Question::askQuestion()
 
 		// Update the correct score
 		Total = Total + Question_Score;
-		cout << "Wynik = " << Question_Score
-			<< " na "
-			<< Question_Score
-			<< "!" << endl;
+		cout << "Zobyłeś " << Question_Score << " punktów!" << endl;
 		cout << endl;
 	}
 
@@ -172,13 +151,11 @@ void Question::askQuestion()
 	else {
 		cout << endl;
 		cout << "Fałsz !" << endl;
-		cout << "Wynik = 0 "
-			<< " na "
-			<< Question_Score
-			<< "!" << endl;
+		cout << "Tracisz " << Question_Score << " punktów!" << endl;
 		cout << "Poprawna odpowiedź = "
 			<< Correct_Answer
 			<< "." << endl;
+		Total = Total - Question_Score;
 		cout << endl;
 	}
 }
