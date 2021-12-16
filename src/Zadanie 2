@@ -1,0 +1,14 @@
+#include <iostream>
+#include <string>
+
+int main()
+{
+	std::string Imie;
+		double waga;
+		int wzrost;
+		Imie = "Aleksander";
+		waga = 70;
+		wzrost = 193;
+		std::cout << "Imie: " << Imie << std::endl << "\n" << "Waga: " << waga << "\n" << "\n" << "Wzrost: " << wzrost << " cm" << "\n";
+		return 0;
+}
