@@ -1,0 +1,26 @@
+#include <iostream>
+#include <string>
+
+bool is_even() 
+{
+    int x = 3;
+    bool y;
+
+    if (x % 2)
+    {
+        y = 0;
+    }
+    else { y = 1; }
+    return y;
+}
+
+int main()
+{
+    if (is_even() == 1)
+        std::cout << "Liczba jest podzielna\n";
+    else {
+        is_even() == 0;
+        std::cout << "Liczba nie jest podzielna\n";
+}
+
+}
