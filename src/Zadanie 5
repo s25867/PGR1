@@ -1,26 +1,38 @@
 #include <iostream>
 #include <string>
 
-bool is_even() 
+int x_value()
 {
-    int x = 3;
+    int x;
+    std::cout << "Podaj liczbe\n";
+    std::cin >> x;
+    return x;
+}
+
+auto is_even() 
+{
+    int x;
     bool y;
+    std::string z;
+
+    x = x_value();
 
     if (x % 2)
     {
-        y = 0;
+        y= 0;
     }
     else { y = 1; }
-    return y;
+    if (y = 1)
+        std::cout << "Liczba " << x << " jest parzysta\n";
+    else {
+        y = 0;
+        std::cout << "Liczba " << x << " nie jest parzysta\n";
+    }
+    return z;
 }
 
 int main()
 {
-    if (is_even() == 1)
-        std::cout << "Liczba jest podzielna\n";
-    else {
-        is_even() == 0;
-        std::cout << "Liczba nie jest podzielna\n";
-}
+    is_even();
 
 }
