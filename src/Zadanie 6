@@ -1,0 +1,73 @@
+#include <iostream>
+#include <string>
+
+int x_value()
+{
+    int x;
+    std::cout << "Podaj dzielona\n";
+    std::cin >> x;
+    return x;
+}
+
+int y_value()
+{
+    int y;
+    std::cout << "Podaj dzielnik\n";
+    std::cin >> y;
+    return y;
+}
+
+auto is_divisble()
+{
+    int x;
+    int y;
+    bool c;
+    std::string d;
+
+    x = x_value();
+    y = y_value();
+
+    if (x % y)
+    {
+        c = 0;
+    }
+    else { c = 1; }
+
+    if (c = 1)
+        std::cout << "Liczba " << x << " jest podzielna przez " << y << "\n";
+    else {
+        c = 0;
+        std::cout << "Liczba " << x << " nie jest podzielna przez " << y << "\n";
+    }
+    return d;
+}
+
+
+auto is_even() 
+{
+    int x;
+    bool y;
+    std::string z;
+
+    x = x_value();
+
+    if (x % 2)
+    {
+        y= 0;
+    }
+    else { y = 1; }
+    if (y = 1)
+        std::cout << "Liczba " << x << " jest parzysta\n";
+    else {
+        y = 0;
+        std::cout << "Liczba " << x << " nie jest parzysta\n";
+    }
+    return z;
+}
+
+int main()
+{
+    is_even();
+    is_divisble();
+
+}
