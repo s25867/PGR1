@@ -1,0 +1,38 @@
+#include <iostream>
+#include <string>
+
+int x_value()
+{
+    int x;
+    std::cout << "Podaj liczbe\n";
+    std::cin >> x;
+    return x;
+}
+
+auto is_even() 
+{
+    int x;
+    bool y;
+    std::string z;
+
+    x = x_value();
+
+    if (x % 2)
+    {
+        y= 0;
+    }
+    else { y = 1; }
+    if (y = 1)
+        std::cout << "Liczba " << x << " jest parzysta\n";
+    else {
+        y = 0;
+        std::cout << "Liczba " << x << " nie jest parzysta\n";
+    }
+    return z;
+}
+
+int main()
+{
+    is_even();
+
+}

@@ -1,0 +1,21 @@
+#include <iostream>
+using namespace std;
+
+int main()
+{
+    string a;
+        int d1, men = 0, kob = 0;
+    std::cout << "Podaj 5 imion\n";
+    for (int i = 0; i < 5; i++)
+    {
+        d1 = 0;
+        cin >> a;
+        d1 = a.size();
+        if (a[d1 - 1] == 'a')
+            kob++;
+        else men++;
+    }
+    cout << "meskich jest " << men << endl;
+    cout << "damskich jest " << kob << endl;
+    return 0;
+}
