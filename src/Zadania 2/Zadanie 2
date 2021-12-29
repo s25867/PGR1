@@ -1,0 +1,58 @@
+
+#include <iostream>
+#include <string>
+#include <vector>
+using namespace std;
+
+bool is_palindrome()
+{
+	string pomocnicza;
+	string wyraz;
+	char last;
+	char first;
+	int d1;
+	int i;
+	std::cin >> wyraz;
+	pomocnicza = wyraz;
+	//cout << pomocnicza << endl;
+	for (i = 1; i <= wyraz.size(); i++)
+	{
+		d1 = wyraz.size();
+		first = wyraz[d1 - wyraz.size() + i - 1];
+		last = wyraz[wyraz.size() - i];
+		if (first == last)
+			continue;
+		else
+		//      cout << " nie jest palindromem" << endl; 
+			return 0;
+	}
+	 //     cout << "jest palindromem" << endl;
+	return 1;
+}
+
+
+auto filter_palindromes()
+{
+	vector <string> palindrom;
+	string wyraz;
+	string pomocnicza;
+	string palindromy;
+
+
+	std::cout << "Podaj wyrazy, napisz koniec aby zakonczyc" << std::endl;
+
+	do
+	{
+		cout << pomocnicza << endl;
+		if (is_palindrome() == 1)
+			cout << wyraz << endl;
+	//		palindromy += wyraz += " ";
+	} while (pomocnicza != "koniec");
+	return palindromy;
+}
+
+int main()
+{
+	cout << filter_palindromes() << endl;
+    return 0;
+}
