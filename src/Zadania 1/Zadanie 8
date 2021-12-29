@@ -1,0 +1,48 @@
+#include <iostream>
+#include <string>
+using namespace std;
+
+std::string wyraz_value()
+{
+    std::string wyraz;
+    std::cout << "Podaj wyraz\n";
+    std::cin >> wyraz;
+    return wyraz;
+}
+
+int nty_value()
+{
+    int nty;
+    std::cout << "Podaj co ktora litere szukasz\n";
+    std::cin >> nty;
+    return nty;
+}
+
+auto count_chars() 
+{
+    string wyraz;
+    int nty;
+    char litera;
+    string g;
+
+    wyraz = wyraz_value();
+    nty = nty_value();
+    int d1;
+    int i = 1;
+    std::cout << "Co " << nty << " znak wyrazu " << wyraz << " to\n";
+        for (i; i <= wyraz.size(); i = i + nty)
+        {
+            d1 = 0;
+            d1 = wyraz.size();
+          litera = wyraz[d1 - i];
+          std::cout << litera << "\n";
+            continue;
+        }
+            return 0;
+    }
+
+int main()
+{
+    count_chars();
+
+}

@@ -1,4 +1,3 @@
-#include <question.h>
 #include <iostream>
 #include <string>
 using namespace std;
@@ -6,8 +5,9 @@ using namespace std;
 int Guess;
 int Total;
 
-struct QuestionValues
-{
+// Question Class
+class Question {
+private:
 	string Question_Text;
 	string Answer_1;
 	string Answer_2;
@@ -16,9 +16,19 @@ struct QuestionValues
 	int Correct_Answer;
 	int Question_Score;
 
+public:
+	// Setter Function
+	void setValues(string, string,
+				string, string,
+				string, int, int);
+
+	// Function to ask questions
+	void askQuestion();
+};
+
 // Driver code
 int main()
-{
+{    
 	string Start;
 	cout << "Czy jesteś gotowy na quiz "
 		<< "? tak/nie" << endl;
@@ -33,18 +43,18 @@ int main()
 		return 0;
 	}
 
+	// Objects of Question Class
+	Question q1;
+	Question q2;
+	Question q3;
+	Question q4;
+	Question q5;
+	Question q6;
+	Question q7;
+	Question q8;
+	Question q9;
+	Question q10;
 
-	while (Total >= 0)
-	{
-	Question::Ask();
-	}
-	else
-	{
-	Question::check()
-
-
-
-	// Objects of Question 
 	// pytanie, odp, odp, odp, odp, numer popr odp, wartosc
 	q1.setValues("Jakiego koloru jest żółty maluch: ", "Czerwonego",
 				"Zielonego", "Żółtego",
@@ -76,10 +86,45 @@ int main()
 	q10.setValues("Jak się nazywa stolica Polski : ", "Warszawa",
 				"Łódź", "Poznań",
 				"Gdańsk", 1, 10);
+
+	q1.askQuestion();
+	q2.askQuestion();
+	q3.askQuestion();
+	q4.askQuestion();
+	q5.askQuestion();
+	q6.askQuestion();
+	q7.askQuestion();
+	q8.askQuestion();
+	q9.askQuestion();
+	q10.askQuestion();
+
+	// Display the total score
+	cout << "Twój wynik = " << Total
+		<< " na 100" << endl;
+
+	// Display the results
+
+	// If the player pass the quiz
+	if (Total >= 70) {
+		cout << "Gratulacje zdałeś quiz" << endl;
+	}
+
+	// Otherwise
+	else {
+		cout << "Niestety nie zdałeś."
+			<< endl;
+		cout << "Powodzenia następnym razem."
+			<< endl;
+	}
+	return 0;
 }
 
-// q question, a1 answer 1, ca correct answer, pv points value
-void Question::setValues(string q, string a1, string a2, string a3, string a4, int ca, int pv)
+// Function to set the values of
+// the questions
+void Question::setValues(
+	string q, string a1,
+	string a2, string a3,
+	string a4, int ca, int pa)
 {
 	Question_Text = q;
 	Answer_1 = a1;
@@ -87,28 +132,11 @@ void Question::setValues(string q, string a1, string a2, string a3, string a4, i
 	Answer_3 = a3;
 	Answer_4 = a4;
 	Correct_Answer = ca;
-	Question_Score = pv;
+	Question_Score = pa;
 }
-
-//Check if won/lost quiz
-int Question::check()
-{
-        if (Total >= 100) {
-                cout << "Gratulacje zdałeś quiz" << endl;
-        	break;
-}
-
-        else
-        if (Total < 0) {
-                cout << "Twoje punkty wynoszą " << Total << ". To koniec, przegrałeś!" << endl;
-        	break;
-}
-return 0;
-}
-
 
 // Function to ask questions
-void Question::Ask()
+void Question::askQuestion()
 {
 	cout << endl;
 
@@ -132,20 +160,25 @@ void Question::Ask()
 
 		// Update the correct score
 		Total = Total + Question_Score;
-		cout << "Zobyłeś " << Question_Score << " punktów!" << endl;
+		cout << "Wynik = " << Question_Score
+			<< " na "
+			<< Question_Score
+			<< "!" << endl;
 		cout << endl;
 	}
 
 	// Otherwise
 	else {
 		cout << endl;
+		Total = Total - Question_Score;
 		cout << "Fałsz !" << endl;
-		cout << "Tracisz " << Question_Score << " punktów!" << endl;
+		cout << "Wynik = 0 "
+			<< " na "
+			<< Question_Score
+			<< "!" << endl;
 		cout << "Poprawna odpowiedź = "
 			<< Correct_Answer
 			<< "." << endl;
-		Total = Total - Question_Score;
 		cout << endl;
 	}
 }
-
