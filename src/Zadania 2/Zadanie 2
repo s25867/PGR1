@@ -1,4 +1,3 @@
-
 #include <iostream>
 #include <string>
 #include <vector>
@@ -43,11 +42,12 @@ auto filter_palindromes()
 
 	do
 	{
-		cout << pomocnicza << endl;
 		if (is_palindrome() == 1)
-			cout << wyraz << endl;
+			cout << "Wyraz jest palindromem!" << endl;
+		else 
+			cout << "Wyraz nie jest palindromem." << endl;
 	//		palindromy += wyraz += " ";
-	} while (pomocnicza != "koniec");
+	} while (wyraz != "koniec");
 	return palindromy;
 }
 
