@@ -3,17 +3,23 @@
 #include <vector>
 using namespace std;
 
-bool is_palindrome()
+auto input()
 {
-	string pomocnicza;
 	string wyraz;
+	cout << "Podaj wyraz" << endl;
+	cin >> wyraz;
+	return wyraz;
+}
+
+string is_palindrome()
+{
+	string wyraz;
+	string cos;
 	char last;
 	char first;
+	wyraz = input();
 	int d1;
 	int i;
-	std::cin >> wyraz;
-	pomocnicza = wyraz;
-	//cout << pomocnicza << endl;
 	for (i = 1; i <= wyraz.size(); i++)
 	{
 		d1 = wyraz.size();
@@ -22,37 +28,39 @@ bool is_palindrome()
 		if (first == last)
 			continue;
 		else
-		//      cout << " nie jest palindromem" << endl; 
-			return 0;
+			//         cout << " nie jest palindromem" << endl; 
+			cos = "0";
+			return cos;
 	}
-	 //     cout << "jest palindromem" << endl;
-	return 1;
+	//        cout << "jest palindromem" << endl;
+	cos = wyraz;
+	return cos;
 }
 
 
 auto filter_palindromes()
 {
-	vector <string> palindrom;
+	vector <string> W;
 	string wyraz;
 	string pomocnicza;
 	string palindromy;
-
-
-	std::cout << "Podaj wyrazy, napisz koniec aby zakonczyc" << std::endl;
-
-	do
+	string cos;
+	int i;
+	for (i = 1; i < 5; i++)
 	{
-		if (is_palindrome() == 1)
-			cout << "Wyraz jest palindromem!" << endl;
-		else 
-			cout << "Wyraz nie jest palindromem." << endl;
-	//		palindromy += wyraz += " ";
-	} while (wyraz != "koniec");
-	return palindromy;
+		wyraz = is_palindrome();
+		if (wyraz == "0")
+			cout << "nie jest to palindrom" << endl;
+		else {
+			W.push_back(wyraz);
+		}
 }
-
+	std::cout << "Palindromy to: ";
+	for (i = 0; i < W.size(); i++)
+	 cout << W.at(i) << " ";
+}
 int main()
 {
-	cout << filter_palindromes() << endl;
-    return 0;
+	filter_palindromes();
+	return 0;
 }
