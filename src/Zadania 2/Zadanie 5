@@ -1,0 +1,27 @@
+#include <iostream>
+#include <string>
+#include <vector>
+using namespace std;
+
+
+auto split()
+{
+	string slowo;
+	vector <string> W;
+	cout << "Podaj slowa, napisz stop aby zakonczyc" << endl;
+	do
+	{
+		cin >> slowo;
+		W.push_back(slowo);
+	} while (slowo != "stop");
+
+	std::cout << "Twoj wektor to: ";
+	for (int i = 0; i < (W.size() - 1); i++)
+		cout << W.at(i) << " ";
+}
+
+int main()
+{
+	split();
+	return 0;
+}
