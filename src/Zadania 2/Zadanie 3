@@ -8,19 +8,23 @@ auto dot_product()
 	vector <float> W1;
 	vector <float> W2;
 	float liczba;
+	float suma = 0;
 
-	std::cout << "Podaj wartosci dla dwoch wektorow" << std::endl;
-
+	cout << "Podaj wartosci pierwszego wektora" << endl;
+	for (int i = 0; i < 2; i++)
+	{
 	cin >> liczba;
-	liczba = W1[i];
-//	cin >> liczba;
-//	liczba = W1[2];
-//	cin >> liczba;
-//	liczba = W2[1];
-//	cin >> liczba;
-//	liczba = W2[2];
+	W1.push_back(liczba);
+	}
 
-	cout << "Wynik to: "; //<< (W1[1] * W2[1] + W1[2] * W2[2]) << endl;
+	cout << "Podaj wartosci drugiego wektora" << endl;
+	for (int i = 0; i < 2; i++)
+	{
+		cin >> liczba;
+		W2.push_back(liczba);
+	}
+
+	cout << "Wynik to: " << ( W1.at(0) * W2.at(0) + W1.at(1) * W2.at(1) ) << endl;
 }
 
 int main()
