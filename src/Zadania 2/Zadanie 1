@@ -1,0 +1,33 @@
+#include <iostream>
+#include <string>
+#include <vector>
+using namespace std;
+
+auto average_of()
+{
+	vector <float> W1;
+	float liczba;
+	float suma = 0;
+	float a;
+	std::cout << "Ile chcesz podać liczb?" << std::endl;
+	cin >> a;
+
+	for (int i = 0; i < a; i++) //nie uyżywam "a" do oblicznia średniej przez podzielenie przez "a", tylko żeby program jakoś się kończył
+	{
+	cin >> liczba;
+	W1.push_back(liczba);
+	}
+	std::cout << "Wynik to ";
+	for (int i = 0; i < W1.size(); i++)
+	{
+		suma += W1.at(1);
+	}
+
+	cout << "Wynik to: " << (suma / W1.size()) << endl;
+}
+
+int main()
+{
+	average_of();
+    return 0;
+}
