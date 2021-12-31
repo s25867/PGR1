@@ -1,0 +1,35 @@
+#include<iostream>
+#include<vector>
+using namespace std;
+
+struct group
+{
+	string nazwa;
+	vector <string> studenci;
+};
+
+void add_student(struct group p);
+
+void add_student(struct group p)
+{
+	cout << " Person citizenship: " << p.nazwa << endl;
+	cout << " Person age: " << p.studenci.at(0);
+}
+
+int main()
+{
+	struct group p;
+	string nazwa;
+	string studenci;
+
+	cout << "Podaj nazwe grupy" << endl;
+	cin >> nazwa;
+	cout << "Podaj imie studenta" << endl;
+	cin >> studenci;
+
+	p.nazwa = nazwa;
+	p.studenci.push_back(studenci);
+
+	add_student(p);
+	return 0;
+}
