@@ -1,0 +1,30 @@
+#include <iostream>
+#include <string>
+#include <vector>
+using namespace std;
+
+auto dot_product()
+{
+	vector <float> W1;
+	vector <float> W2;
+	float liczba;
+
+	std::cout << "Podaj wartosci dla dwoch wektorow" << std::endl;
+
+	cin >> liczba;
+	liczba = W1[i];
+//	cin >> liczba;
+//	liczba = W1[2];
+//	cin >> liczba;
+//	liczba = W2[1];
+//	cin >> liczba;
+//	liczba = W2[2];
+
+	cout << "Wynik to: "; //<< (W1[1] * W2[1] + W1[2] * W2[2]) << endl;
+}
+
+int main()
+{
+	dot_product();
+    return 0;
+}
