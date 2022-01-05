@@ -8,12 +8,10 @@ struct group
 	vector <string> studenci;
 };
 
-void add_student(struct group p);
-
 void add_student(struct group p)
 {
-	cout << " Person citizenship: " << p.nazwa << endl;
-	cout << " Person age: " << p.studenci.at(0);
+	cout << "Nazwa grupy " << p.nazwa << endl;
+	cout << "Imie studenta " << p.studenci.at(0);
 }
 
 int main()
