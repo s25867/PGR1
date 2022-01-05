@@ -18,15 +18,15 @@ int main()
 {
 	struct group p;
 	string nazwa;
-	string studenci;
+	string student;
 
 	cout << "Podaj nazwe grupy" << endl;
 	cin >> nazwa;
 	cout << "Podaj imie studenta" << endl;
-	cin >> studenci;
+	cin >> student;
 
 	p.nazwa = nazwa;
-	p.studenci.push_back(studenci);
+	p.studenci.push_back(student);
 
 	add_student(p);
 	return 0;
