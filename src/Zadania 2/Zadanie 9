@@ -1,0 +1,42 @@
+#include<iostream>
+#include<vector>
+using namespace std;
+
+struct group
+{
+	vector <string> pierwszy = { "Jan", "Julia", "Jacek", "Ola" };
+	vector <string> drugi = { "Jan", "Julia", "Jacek" };
+};
+
+//funckja input
+//string input(struct group p) {
+//	cout << "Podaj wartosci dla wektorow, napisz koniec aby zakonczyc" << endl;
+//	string wyraz;
+//	do {
+//		cin >> wyraz;
+//		p.pierwszy.push_back(wyraz); //pierwszy/drugi
+//	} while (wyraz != "koniec");
+//}
+
+bool contains_all(struct group p)
+{
+	string pomocnicza;
+	string wyraz;
+	for (int i = 0; i < p.drugi.size(); i++) {
+		wyraz = p.drugi[i];
+		if (p.drugi[i] != p.pierwszy[i]) {
+			cout << "Drugi wektor nie jest podzbiorem pierwszego" << endl;
+			return 0;
+		}
+		else continue;
+	}
+	cout << "Drugi wektor jest podzbiorem pierwszego" << endl;
+	return 0;
+}
+
+int main()
+{
+	struct group p;
+	contains_all(p);
+	return 0;
+}
