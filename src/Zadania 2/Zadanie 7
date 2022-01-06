@@ -148,7 +148,5 @@ void Question::askQuestion()
 		cout << "Poprawna odpowiedź = " << Correct_Answer << "." << endl;
 		cout << endl;
 		Total = Total - Question_Score;
-		if (Total < 0)
-			game_over();
 	}
 }
