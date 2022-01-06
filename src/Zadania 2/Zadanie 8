@@ -1,0 +1,52 @@
+#include<iostream>
+#include<vector>
+using namespace std;
+
+struct group
+{
+	string nazwa = "1";
+	vector <string> studenci = {"Jan", "Julia", "Jacek"};
+	double srednia = 2;
+};
+
+struct group2
+{
+	string nazwa = "2";
+	vector <string> studenci = {"Kamil", "Karol", "Kuba"};
+	double srednia = 3;
+};
+
+struct group3
+{
+	string nazwa = "3";
+	vector <string> studenci = {"Weronika", "Wiktor", "Wojciech"};
+	double srednia = 1;
+};
+
+//nie mam pomysłu jak zrobić pętle typu for(i++... kiedy musze podać dokładną nazwę structa zamiast np. numeru studenta
+void best_groups_name(struct group p1, struct group2 p2, struct group3 p3)
+{
+	double pomocnicza = 0;
+	string best;
+
+	pomocnicza = p1.srednia;
+	best = p1.nazwa;
+	if (p2.srednia > pomocnicza) {
+		pomocnicza = p2.srednia;
+	best = p2.nazwa;
+}
+	if (p3.srednia > pomocnicza) {
+		pomocnicza = p3.srednia;
+		best = p3.nazwa;
+	}
+	cout << best << " to najlepsza grupa" << endl;
+}
+
+int main()
+{
+	struct group p1;
+	struct group2 p2;
+	struct group3 p3;
+	best_groups_name(p1, p2, p3);
+	return 0;
+}
