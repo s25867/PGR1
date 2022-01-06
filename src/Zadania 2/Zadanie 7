@@ -14,38 +14,25 @@ bool game_over() {
 	return 0;
 }
 
-// Question Class
 class Question {
 public:
+	int skip = 0;
+	int half = 0;
 	string Question_Text;
 	string Correct;
 	int Correct_Answer;
 	int Question_Score;
 	vector <string> Wrong;
-	// Function to ask questions
 	void askQuestion();
+	void Set();
+	void True();
+	void False();
+	void RandomQ();
+	void Half();
 };
 
-// Driver code
-int main()
-{
-	string Start;
-	cout << "Czy jesteś gotowy na quiz "
-		<< "? tak/nie" << endl;
-	cin >> Start;
+void Question::Set() {
 
-	if (Start == "tak") {
-		cout << endl;
-		cout << "Powodzenia!" << endl;
-	}
-	else {
-		cout << "Dowidzenia!" << endl;
-		return 0;
-	}
-
-
-
-	// Objects of Question Class
 	Question q1;
 	q1.Question_Text = "Jakiego koloru jest zolty maluch: ";
 	srand((unsigned)time(0));
@@ -74,79 +61,168 @@ int main()
 	q3.Correct_Answer = (rand() % 4);
 	q3.Correct = "Dziesiec";
 	q3.Wrong.push_back("Cztery");
-	q3.Wrong.push_back("Miety");
+	q3.Wrong.push_back("Dwadziescia");
 	q3.Wrong.push_back("Tysiac");
 	q3.Wrong.push_back("Sto");
 	q3.Question_Score = 10;
 
+	Question q4;
+	q4.Question_Text = "Jak ma na imię prezydent polski : ";
+	srand((unsigned)time(0));
+	q4.Correct_Answer = (rand() % 4);
+	q4.Correct = "Andrzej";
+	q4.Wrong.push_back("Duda");
+	q4.Wrong.push_back("Kamil");
+	q4.Wrong.push_back("Jarosław");
+	q4.Wrong.push_back("Jan");
+	q4.Question_Score = 10;
 
-
-	vector<Question>vQuestion = { q1, q2, q3 };
+	vector<Question>vQuestion = { q1, q2, q3, q4 };
 
 	do {
-			int i = 0;
-			int nums[4] = { 0, 1, 2 };
-			random_shuffle(nums, nums + 3);
-			vQuestion.at(nums[i]).askQuestion();
-			i++;
-
+		int i = 0;
+		int nums[4] = { 0, 1, 2, 3 };
+		random_shuffle(nums, nums + 4);
+		vQuestion.at(nums[i]).askQuestion();
+		i++;
+		cout << "Punkty: " << Total << endl;
 	} while (Total >= 0);
-		game_over();
-
-
-	//q3.setValues("Ile nóg ma stonoga : ", "Dziesięć", "Cztery", "Dziewiędziesiąt", "Sto", 1, 10);
-	//q4.setValues("Jak ma na imię prezydent polski : ", "Duda", "Kamil", "Andrzej", "Jarosław", 3, 10);
-	//q5.setValues("Ile lat ma doda : ", "37", "50", "29", "42", 1, 10);
-	//q6.setValues("Które z tych państw nie leży w Europie : ", "Polska", "Finlandia", "Rosja", "Australia", 4, 10);
-	//q7.setValues("Łacińska nazwa na kota domowego : ", "cattus domesticus", "domesticus cattus", "canis cattus", "domesticus canis", 2, 10);
-	//q8.setValues("Ile godzin ma doba : ", "12", "168", "24", "26", 3, 10);
-	//q9.setValues("W którym roku po raz pierwszy wyemitowano Milionerów w Polsce : ", "1999", "1994", "2001", "2004", 1, 10);
-//	q10.setValues("Jak się nazywa stolica Polski : ", "Warszawa","Łódź", "Poznań", "Gdańsk", 1, 10);
-
-	return 0;
+	game_over();
 }
 
-// Function to ask questions
-void Question::askQuestion()
-{
+void Question::True() {
+	cout << endl;
+	cout << "Prawda !" << endl;
+	Total = Total + Question_Score;
+	cout << "Zdobywasz " << Question_Score << " punktów!" << endl;
+	cout << endl;
+}
+
+void Question::False() {
+	cout << endl;
+	cout << "Fałsz !" << endl;
+	cout << "Tracisz " << Question_Score << " punktów!" << endl;
+	cout << "Poprawna odpowiedź = " << Correct << "." << endl;
+	cout << endl;
+	Total = Total - Question_Score;
+}
+
+void Question::RandomQ() {
 	cout << endl;
 	int nums[4] = { 0, 1, 2, 3 };
 	random_shuffle(nums, nums + 4);
 	srand((unsigned)time(0));
-	// Print the questions
 	cout << Question_Text << endl;
 	for (int index = 0; index < 4; index++) {
 		if (Correct_Answer == index)
 			cout << index + 1 << " " << Correct << endl;
 		else
-				cout << index + 1 << " " << Wrong.at(nums[index]) << endl;
+			cout << index + 1 << " " << Wrong.at(nums[index]) << endl;
 	}
 
 	cout << endl;
 
-	// Display the answer
 	cout << "Jaka jest twoja odpowiedz (cyfra)"
 		<< endl;
 	cin >> Guess;
+}
 
-	// If the answer is correct
-	if (Guess == Correct_Answer+1) {
-		cout << endl;
-		cout << "Prawda !" << endl;
-
-		// Update the correct score
-		Total = Total + Question_Score;
-		cout << "Wynik = " << Question_Score << " na " << Question_Score << "!" << endl;
-		cout << endl;
+void Question::Half() {
+	cout << endl;
+	int nums[2] = { 0, 1 };
+	random_shuffle(nums, nums + 2);
+	srand((unsigned)time(0));
+	cout << Question_Text << endl;
+	for (int index = 0; index < 2; index++) {
+		if (Correct_Answer == index)
+			cout << index + 1 << " " << Correct << endl;
+		else
+			cout << index + 1 << " " << Wrong.at(nums[index]) << endl;
 	}
+	cout << endl;
+	cout << "Jaka jest twoja odpowiedz (cyfra)"
+		<< endl;
+	cin >> Guess;
+}
 
-	// Otherwise
+bool Welcome() {
+	string Start;
+	cout << "Witaj w moim quizie, zasady sa proste" << endl
+		<< "Uzywaj liczb 1 2 3 4 aby odpowiadac na pytania" << endl
+		<< "Uzyj 5 aby usunac 2 zle odpowiedzi" << endl
+		<< "Uzyj 6 aby ominac pytanie" << endl
+		<< "Za kazde pytanie dostaje albo tracisz punkty" << endl
+		<<	"Czy jesteś gotowy na quiz? " << " [tak/nie]" << endl;
+	cin >> Start;
+
+	if (Start == "tak") {
+		cout << endl;
+		cout << "Powodzenia!" << endl;
+	}
 	else {
-		cout << endl;
-		cout << "Fałsz !" << endl;
-		cout << "Wynik = 0 " << " na " << Question_Score << "!" << endl;
-		cout << "Poprawna odpowiedź = " << Correct_Answer << "." << endl;
-		cout << endl;
-		Total = Total - Question_Score;
+		cout << "Dowidzenia!" << endl;
+		return 0;
 	}
 }
+
+	int main() {
+
+		if (Welcome() == 0)
+			return 0;
+
+		Question qq;
+		qq.Set();
+
+		//q5.setValues("Ile lat ma doda : ", "37", "50", "29", "42", 1, 10);
+		//q6.setValues("Które z tych państw nie leży w Europie : ", "Polska", "Finlandia", "Rosja", "Australia", 4, 10);
+		//q7.setValues("Łacińska nazwa na kota domowego : ", "cattus domesticus", "domesticus cattus", "canis cattus", "domesticus canis", 2, 10);
+		//q8.setValues("Ile godzin ma doba : ", "12", "168", "24", "26", 3, 10);
+		//q9.setValues("W którym roku po raz pierwszy wyemitowano Milionerów w Polsce : ", "1999", "1994", "2001", "2004", 1, 10);
+	//	q10.setValues("Jak się nazywa stolica Polski : ", "Warszawa","Łódź", "Poznań", "Gdańsk", 1, 10);
+
+		return 0;
+	}
+
+void Question::askQuestion()
+{
+	RandomQ();
+	cout << "to jest half" << half << endl;
+
+	if (Guess == 5) {
+		if (half == 0) {
+			Half(); half++;
+		}
+		else { 
+			cout << "Wykorzystales juz to kolo ratunkowe" << endl; Total = Total;
+		}
+
+		if (Guess == Correct_Answer + 1) {
+			True();
+		}
+
+		else {
+			False();
+		}
+	}
+	else if (Guess == 6) {
+		if (skip == 0) {
+			Total = Total;
+			cout << "Omijasz to pytanie" << endl;
+			cout << endl;
+		}
+		else {
+			cout << "Wykorzystales juz to kolo ratunkowe" << endl; skip++;
+			Total = Total;
+		}
+	}
+
+	else
+	if (Guess == Correct_Answer + 1) {
+		True();
+	}
+
+	else {
+		False();
+	}
+}
+
