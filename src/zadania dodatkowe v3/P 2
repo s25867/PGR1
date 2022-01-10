@@ -1,0 +1,27 @@
+#include <iostream>
+using namespace std;
+int main()
+{
+	int i, j;
+	int x = 6;
+	int y = 1;
+	cout << "podaj wysokosc" << endl;
+	cin >> x;
+
+	for (j = 1; j <= 5; j++)
+	{
+		for (i = 1; i <= x; i++)
+		{
+			cout << " ";
+		}
+		x--;
+
+		for (i = 1; i <= y; i++)
+		{
+			cout << "*";
+		}
+		y += 2;
+
+		cout << endl;
+	}
+}
