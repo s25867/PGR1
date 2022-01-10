@@ -3,6 +3,7 @@ using namespace std;
 
 int main() {
     int dzien = 4;
+    cin >> dzien;
     switch (dzien) {
     case 1:
         cout << "Poniedzialek";
