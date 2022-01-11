@@ -86,9 +86,9 @@ void Question::Set() {
 
 	vector<Question>vQuestion = { q1, q2, q3, q4, q5 };
 	int i = 0;
+	int nums[5] = { 0, 1, 2, 3, 4 };
+	random_shuffle(nums, nums + 5);
 	do {
-		int nums[5] = { 0, 1, 2, 3, 4 };
-		random_shuffle(nums, nums + 5);
 		vQuestion.at(nums[i]).Answer();
 		i++;
 		if (i == 5) {
@@ -195,7 +195,6 @@ bool Welcome() {
 		Question qq;
 		qq.Set();
 
-		//q5.setValues("Ile lat ma doda : ", "37", "50", "29", "42", 1, 10);
 		//q6.setValues("Które z tych państw nie leży w Europie : ", "Polska", "Finlandia", "Rosja", "Australia", 4, 10);
 		//q7.setValues("Łacińska nazwa na kota domowego : ", "cattus domesticus", "domesticus cattus", "canis cattus", "domesticus canis", 2, 10);
 		//q8.setValues("Ile godzin ma doba : ", "12", "168", "24", "26", 3, 10);
