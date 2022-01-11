@@ -1,0 +1,37 @@
+#include <iostream>
+#include <vector>
+#include <cstdlib>
+#include <ctime>
+using namespace std;
+
+struct Samochod {
+	string marka;
+	string model;
+	int rok;
+	int przebieg;
+	int dzisiaj;
+	float cenawy;
+	float cenako;
+	void konstruktor() {
+		marka = "fiat";
+		model = "bravo";
+		rok = 2007;
+		przebieg = 180000;
+	}
+	void ustawcenewyjsciowa() {
+		cenawy = 200000;
+	}
+	void obliczcenekoncowa() {
+		dzisiaj = 2022;
+		cenawy = cenawy - (dzisiaj - rok) * 10000 - przebieg / 3;
+		cout << cenawy;
+	}
+};
+
+int main() {
+	struct Samochod s;
+	s.konstruktor();
+	s.ustawcenewyjsciowa();
+	s.obliczcenekoncowa();
+
+}
