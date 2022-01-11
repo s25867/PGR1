@@ -1,0 +1,28 @@
+#include <iostream>
+#include <vector>
+#include <cstdlib>
+#include <ctime>
+using namespace std;
+
+auto losowanie(int argc, char* argv) -> int {
+	vector<int>losowe;
+	int a = 0;
+	for (int i = 0; i < argc; i++) {
+		int j;
+		srand((unsigned)time(0));
+		j = (rand() % 10);
+		losowe.push_back(j);
+	}
+
+	for (int i = 0; i < argc; i++) {
+		if (argv[i] == losowe[i]) {
+			a++;
+		}
+	}
+	cout << "Trafiles " << a << " z " << argc << endl;
+}
+
+int main() {
+		
+	losowanie();
+}
