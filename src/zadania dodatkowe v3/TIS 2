@@ -7,13 +7,15 @@ using namespace std;
 auto losowanie(int argc, char* argv) -> int {
 	vector<int>losowe;
 	int a = 0;
+	cout << "Wylosowane liczby to ";
 	for (int i = 0; i < argc; i++) {
 		int j;
 		srand((unsigned)time(0));
 		j = (rand() % 10);
 		losowe.push_back(j);
+		cout << j;
 	}
-
+	cout << endl;
 	for (int i = 0; i < argc; i++) {
 		if (argv[i] == losowe[i]) {
 			a++;
