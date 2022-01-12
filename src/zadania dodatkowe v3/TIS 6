@@ -1,0 +1,107 @@
+#include <iostream>
+#include <vector>
+#include <string>
+using namespace std;
+
+struct telefon {
+    vector<string>nazwa = { "0" };
+    vector<int>lpol = { 0 };
+    vector<string>numer = { "0" };
+    bool koniec = 0;
+    void dodaj() {
+        string j;
+        cout << "Podaj numer do dodania" << endl;
+        cin >> j;
+        for (int i = 0; i < numer.size(); i++) {
+            if (numer.at(i) == j) {
+                cout << "taki numer jest już zapisany" << endl;
+                break;
+            }
+            if (i == numer.size() - 1) {
+                numer.push_back(j);
+                cout << "Podaj nazwe do dodania" << endl;
+                cin >> j;
+                nazwa.push_back(j);
+                lpol.push_back(0);
+                break;
+            }
+                }
+    };
+    void usun() {
+        string j;
+        cout << "Podaj numer do usuniecia" << endl;
+        cin >> j;
+        for (int i = 0; i < numer.size(); i++) {
+            if (numer[i] == j) {
+                numer.erase(numer.begin() + i);
+                nazwa.erase(nazwa.begin() + i);
+            }
+        }
+    };
+    void find() { //to dokonczyc
+        string j;
+        cout << "Podaj numer do wyszukania" << endl;
+        cin >> j;
+        for (int i = 0; i < numer.size(); i++) {
+            if (numer[i] == j) {
+                cout << nazwa[i] << endl;
+            }
+        }
+    };
+    void all() {
+        for (int i = 0; i < numer.size(); i++) {
+            cout << numer[i] << endl;
+        }
+    };
+    void call() {
+        string j;
+        int pom;
+        cout << "Podaj nazwe do ktorej chcesz zadzwonic" << endl;
+        cin >> j;
+        for (int i = 0; i < numer.size(); i++) {
+            if (nazwa[i] == j) {
+                pom = lpol[i];
+                pom++;
+                //lpol.(begin+i(pom));
+                //to do zrobienia
+                cout << "Liczba polaczen " << lpol[i] << endl;
+            }
+        }
+    }
+    bool exit() {
+        koniec = 1;
+        return 1;
+    };
+};
+
+
+int main() {
+    struct telefon s;
+    do {
+        cout << "1 dodaj; 2 usun; 3 znajdz; 4 all;  5 zadzwon; 6 exit" << endl;
+        int wejsciowa = 0;
+        cin >> wejsciowa;
+        cout << endl;
+        switch (wejsciowa) {
+        case 1:
+            s.dodaj();
+            break;
+        case 2:
+            s.usun();
+            break;
+        case 3:
+            s.find();
+            break;
+        case 4:
+            s.all();
+            break;
+        case 5:
+            s.call();
+            break;
+        case 6:
+            s.exit();
+            break;
+        }
+    } while (s.koniec == 0);
+    return 0;
+}
