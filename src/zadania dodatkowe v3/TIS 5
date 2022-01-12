@@ -7,10 +7,16 @@ struct slownik {
     vector<string>slowa;
     bool koniec = 0;
     void dodaj() {
-        string i;
+        string j;
         cout << "Podaj slowo do dodania" << endl;
-        cin >> i;
-        slowa.push_back(i);
+        cin >> j;
+        for (int i = 0; i < numer.size(); i++) {
+            if (slowa[i] == j) {
+                "taki numer jest już zapisany";
+            }
+            else {
+                slowa.push_back(j);
+            }
     };
     void usun() {
         string j;
