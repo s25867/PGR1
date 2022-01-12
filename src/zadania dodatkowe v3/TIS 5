@@ -5,23 +5,69 @@ using namespace std;
 
 struct slownik {
     vector<string>slowa;
+    bool koniec = 0;
     void dodaj() {
         string i;
-        cout << "Podaj slowo" << endl;
+        cout << "Podaj slowo do dodania" << endl;
         cin >> i;
         slowa.push_back(i);
     };
     void usun() {
+        string j;
         cout << "Podaj slowo do usuniecia" << endl;
+        cin >> j;
+        for (int i = 0; i < slowa.size(); i++) {
+            if (slowa[i] == j) {
+                slowa.erase(slowa.begin() + i);
+            }
+        }
     };
-    void find();
-    void all();
-    bool exit();
+    void find() {
+        string j;
+        cout << "Podaj slowo do wyszukania" << endl;
+        cin >> j;
+        for (int i = 0; i < slowa.size(); i++) {
+            if (slowa[i] == j) {
+                cout << slowa[i] << endl;
+            }
+        }
+    };
+    void all() {
+        for (int i = 0; i < slowa.size(); i++) {
+            cout << slowa[i] << endl;
+        }
+    };
+    bool exit() {
+        koniec = 1;
+        return 1;
+    };
 };
 
 
-int main()
-{
+int main() {
     struct slownik s;
-    std::cout << "Hello World!\n";
+    do {
+        cout << "1 dodaj; 2 usun; 3 znajdz; 4 all; 5 exit";
+        int wejsciowa = 0;
+        cin >> wejsciowa;
+        cout << endl;
+        switch (wejsciowa) {
+        case 1:
+            s.dodaj();
+            break;
+        case 2:
+            s.usun();
+            break;
+        case 3:
+            s.find();
+            break;
+        case 4:
+            s.all();
+            break;
+        case 5:
+            s.exit();
+            break;
+        }
+    } while (s.koniec == 0);
+    return 0;
 }
