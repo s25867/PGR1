@@ -3,28 +3,50 @@
 #include <vector>
 using namespace std;
 
-auto get_best_student()
+struct group
 {
-	float srednia;
-	vector <float> W;
-	float pomocnicza = 0;
+	string imie = "Jan";
+	string nazwisko - "Kowalski";
+	double srednia = 2;
+};
 
-	cout << "Podaj srednie studentow, napisz 0 aby zakonczyc" << endl;
-	do
-	{
-		cin >> srednia;
-		W.push_back(srednia);
-	} while (srednia != 0);
+struct group2
+{
+	string imie = "Hubert";
+	string nazwisko - "Młot";
+	double srednia = 3;
+};
 
-	std::cout << "Najwyzsza srednia to: ";
-	for (int i = 0; i < W.size(); i++)
-		if (pomocnicza < W.at(i))
-			pomocnicza = W.at(i);
-	cout << pomocnicza << endl;
+struct group3
+{
+	string imie = "Agnieszka";
+	string nazwisko - "Młoda";
+	double srednia = 1;
+};
+
+void get_best_student(struct group p1, struct group2 p2, struct group3 p3)
+{
+	double pomocnicza = 0;
+	string best;
+
+	pomocnicza = p1.srednia;
+	best = p1.nazwa;
+	if (p2.srednia > pomocnicza) {
+		pomocnicza = p2.srednia;
+	best = p2.nazwa;
+}
+	if (p3.srednia > pomocnicza) {
+		pomocnicza = p3.srednia;
+		best = p3.nazwa;
+	}
+	cout << best << " to najlepszy student" << endl;
 }
 
 int main()
 {
-	get_best_student();
+	struct group p1;
+	struct group2 p2;
+	struct group3 p3;
+	get_best_student(p1, p2, p3);
 	return 0;
 }
