@@ -1,0 +1,27 @@
+#include <iostream>
+#include <vector>
+#include <string>
+using namespace std;
+
+struct slownik {
+    vector<string>slowa;
+    void dodaj() {
+        string i;
+        cout << "Podaj slowo" << endl;
+        cin >> i;
+        slowa.push_back(i);
+    };
+    void usun() {
+        cout << "Podaj slowo do usuniecia" << endl;
+    };
+    void find();
+    void all();
+    bool exit();
+};
+
+
+int main()
+{
+    struct slownik s;
+    std::cout << "Hello World!\n";
+}
