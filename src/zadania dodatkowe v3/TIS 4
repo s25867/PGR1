@@ -1,0 +1,24 @@
+#include <iostream>
+#include <vector>
+#include <cstdlib>
+#include <ctime>
+using namespace std;
+
+void Pascal() {
+	vector<int>pamiec;
+	pamiec.push_back(1);
+	int wysokosc;
+	cin >> wysokosc;
+	for (int i = 2; i < wysokosc; i++) {
+
+		for (int j = 2; j < i; j++) {
+			cout << " " << pamiec[j];
+		}
+	}
+}
+
+int main() {
+
+	Pascal();
+
+}
