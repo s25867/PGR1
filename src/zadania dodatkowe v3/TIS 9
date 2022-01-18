@@ -1,0 +1,27 @@
+#include <iostream>
+#include <vector>
+#include <string>
+using namespace std;
+
+class banknoty {
+public:
+    vector<int>nominaly = { 500,200,100,50,20,10,5,2,1 };
+    int liczba;
+    int pomocnicza;
+    void wynik() {
+        cout << "podaj liczba" << endl;
+        cin >> liczba;
+        for (int i = 0; i < nominaly.size(); i++) {
+            cout << nominaly[i] << " - " << (liczba / nominaly[i]) << " szt" << endl;
+            liczba = liczba - (liczba / nominaly[i]) * nominaly[i];
+        }
+    }
+};
+
+
+int main() {
+    banknoty n;
+    n.wynik();
+
+    return 0;
+}
