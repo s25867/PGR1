@@ -1,0 +1,77 @@
+#include <iostream>
+#include <vector>
+#include <string>
+using namespace std;
+
+class trojkat {
+public:
+    int a;
+    int b;
+    int c;
+    void sprawdz() {
+        a = a * a;
+        b = b * b;
+        c = c * c;
+
+        int max = 0, min = 0, mid = 0, sum = 0;
+
+        if (a > b) {
+            if (a > c) {
+                max = a;
+            }
+            else mid = a;
+        }
+        else min = a;
+
+        if (b > a) {
+            if (b > c) {
+                max = b;
+            }
+            else mid = b;
+        }
+        else min = b;
+
+        if (c > b) {
+            if (c > a) {
+                max = c;
+            }
+            else mid = c;
+        }
+        else min = c;
+
+        sum = min + mid;
+        
+        if (sum > max) {
+            cout << "ostrokatny" << endl;
+        }
+        else if (sum == max) {
+            cout << "prostokatny" << endl;
+        }
+        else if (sum < max) {
+            cout << "rozwartokatny" << endl;
+        }
+
+    }
+};
+
+
+int main() {
+    trojkat obiekt;
+    trojkat obiekt2;
+    trojkat obiekt3;
+
+    obiekt.a = 3;
+    obiekt.b = 4;
+    obiekt.c = 5;
+    obiekt2.a = 8;
+    obiekt2.b = 12;
+    obiekt2.c = 13;
+    obiekt3.a = 16;
+    obiekt3.b = 17;
+    obiekt3.c = 12;
+    obiekt.sprawdz();
+    obiekt2.sprawdz();
+    obiekt3.sprawdz();
+
+    return 0;
+}
