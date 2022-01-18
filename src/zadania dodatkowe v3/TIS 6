@@ -38,7 +38,7 @@ struct telefon {
             }
         }
     };
-    void find() { //to dokonczyc
+    void find() { 
         string j;
         cout << "Podaj numer do wyszukania" << endl;
         cin >> j;
@@ -62,8 +62,7 @@ struct telefon {
             if (nazwa[i] == j) {
                 pom = lpol[i];
                 pom++;
-                //lpol.(begin+i(pom));
-                //to do zrobienia
+                lpol.(begin+i(pom));
                 cout << "Liczba polaczen " << lpol[i] << endl;
             }
         }
