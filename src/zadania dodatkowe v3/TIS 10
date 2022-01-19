@@ -5,10 +5,11 @@ using namespace std;
 
 class macierze {
 public:
-    vector<int>liczby = {1,2,3,4,5,6,7,8};
     int rozmiar;
     int wariant;
-    int pomocnicza;
+    int k = 0;
+    vector<int>liczba;
+    int pomocnicza = 0;
     void wynik() {
 
         cout << "podaj wariant macierzy (1 2 3 4)" << endl;
@@ -18,110 +19,65 @@ public:
 
         switch (wariant) {
         case 1:
-            cout << "[";
-            for (int i = 0; i < rozmiar; i++) {
-                cout << i+1 << " ";
+            for (int j = 0; j < rozmiar; j++) {
+                cout << "[";
+                for (int i = 0; i < rozmiar; i++) {
+                    cout << i + j << " ";
+                }
+                cout << "]" << endl;
+                
             }
-            cout << "]" << endl;
-
-            cout << "[";
-
-            for (int i = 0; i < rozmiar; i++) {
-                cout << i + 2 << " ";
-            }
-            cout << "]" << endl;
-
-            cout << "[";
-            for (int i = 0; i < rozmiar; i++) {
-                cout << i + 3 << " ";
-            }
-            cout << "]" << endl;
-
-            cout << "[";
-            for (int i = 0; i < rozmiar; i++) {
-                cout << i + 4 << " ";
-            }
-            cout << "]" << endl;
             break;
         case 2:
-            cout << "[";
-            for (int i = 0; i < rozmiar; i++) {
-                cout << i - 2 << " ";
+            for (int j = 0; j < (rozmiar); j++) {
+                cout << "[";
+                for (int i = rozmiar; i > 0; i--) {
+                    pomocnicza = j - i + 1;
+                    if (pomocnicza < 0)
+                        pomocnicza = 0;
+                    cout << pomocnicza << " ";
+                }
+                cout << "]" << endl;
+                
             }
-            cout << "]" << endl;
-
-            cout << "[";
-            for (int i = 0; i < rozmiar; i++) {
-                cout << i - 1 << " ";
-            }
-            cout << "]" << endl;
-
-            cout << "[";
-            for (int i = 0; i < rozmiar; i++) {
-                cout << i << " ";
-            }
-            cout << "]" << endl;
-
-            cout << "[";
-            for (int i = 0; i < rozmiar; i++) {
-                cout << i + 1 << " ";
-            }
-            cout << "]" << endl;
             break;
         case 3:
-            cout << "[";
-            for (int i = 0; i < rozmiar; i++) {
-                cout << i + 2 << " ";
-            }
-            cout << "]" << endl;
+            pomocnicza = 0;
+            for (int j = 0; j < rozmiar; j++) {
+                cout << "[";
+                k = k+2;
+                
+                for (int i = 0; i < rozmiar; i++) {
+                    pomocnicza = pomocnicza + 2;
+                    liczba.push_back(pomocnicza);
+                    if (liczba[i] < k) {
+                        liczba[i] = k;
+                    
+                    }
 
-            cout << "[";
-            for (int i = 0; i < rozmiar; i++) {
-                cout << i + 1 << " ";
+                    cout << liczba[i] << " ";
+                }
+                cout << "]" << endl;
+                
             }
-            cout << "]" << endl;
-
-            cout << "[";
-            for (int i = 0; i < rozmiar; i++) {
-                cout << i + 3<< " ";
-            }
-            cout << "]" << endl;
-
-            cout << "[";
-            for (int i = 0; i < rozmiar; i++) {
-                cout << i + 4 << " ";
-            }
-            cout << "]" << endl;
             break;
         case 4:
-            cout << "[";
-            for (int i = 0; i < rozmiar; i++) {
-                cout << i + 1 << " ";
+            pomocnicza = rozmiar;
+            for (int j = 0; j < rozmiar; j++) {
+                cout << "[";
+                for (int i = rozmiar; i > 0; i--) {
+                    pomocnicza = i - j + 1;
+                    if (pomocnicza < 0)
+                        pomocnicza = 0;
+                    cout << pomocnicza << " ";
+                }
+                cout << "]" << endl;
+                
             }
-            cout << "]" << endl;
-
-            cout << "[";
-
-            for (int i = 0; i < rozmiar; i++) {
-                cout << i + 2 << " ";
-            }
-            cout << "]" << endl;
-
-            cout << "[";
-            for (int i = 0; i < rozmiar; i++) {
-                cout << i + 3 << " ";
-            }
-            cout << "]" << endl;
-
-            cout << "[";
-            for (int i = 0; i < rozmiar; i++) {
-                cout << i + 4 << " ";
-            }
-            cout << "]" << endl;
             break;
-
         }
     }
+
 };
 
 
